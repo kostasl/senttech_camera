@@ -1,0 +1,19 @@
+[Sample codes for Sentech USB Camera Driver for Linux]
+
+Two sample codes are available.
+
+simple_capture
+The image output with the camera default settings.
+The executable file of this sample code creates when installing with 1. installa mode.
+Please double click [simple_capture] file or run at the command line.
+
+[/dev/video0] is the default camera device. The camera device is selectable when run at the command line as the below command.
+#simple_capture> ./simple_capture -d /dev/video1
+
+viewer
+The settings change and image out by GUI.
+The executable file of this sample code creates when installing with 1. installa mode.
+Please double click [viewer] file or run at the command line.
+
+[/dev/video0] is the default camera device. The camera device is selectable when run at the command line as the below command.
+#viewer> ./viewer -d /dev/video1

@@ -1,0 +1,79 @@
+[Installation manual for Sentech USB Camera Driver for Linux]
+
+Please execute with the administrative right for the commands in this document.
+
+Please install the driver either,
+Necessary components install by the commands or,
+Automatic installs by the shell script.
+
+
+If the version Sentech-3.x.x or earlier Sentech Linux USB driver uses on the system, please uninstall it by [uninstall_old_driver.sh] shell script in this folder before install this driver.
+#> ./uninstall_old_driver.sh
+
+
+The sample codes of this driver use below libraries.
+Please install necessary libraries in advance when selecting “Installation mode 1”, which includes creating the executable file for these sample codes.
+It is not necessary to install these libraries if the executable files do not create and use.
+[simple_capture]
+ OpenCV
+[viewer]
+ OpenCV
+ Qt
+
+[The libraries install for Ubuntu]
+ OpenCV
+#> apt-get install libopencv-dev
+ Qt
+#> apt-get install qt5-default
+
+[The libraries install for CentOS]
+ OpenCV
+#> yum install libopencv-dev
+ Qt
+#> yum install qt5-qtbase-devel.x86_64
+
+
+The driver installs automatically by [install.sh] shell script in this folder.
+#> ./install.sh
+
+There are below four installation modes are available for the automatic installation.
+1. Device driver and libraries are installing and creating executable file for sample codes.
+2. Only device driver is installing. (when image processing by libraries of driver is not necessary)
+3. Only files are extracting. (for cross compiling for the embedded system)
+4. Uninstalling
+Please select "Enter" key only if does not want to install with these installation modes and exit this shell script.
+
+If any installation modes do not much requirement, please install the necessary components by the below commands.
+
+[stcam_dd]
+#> cd stcam_dd
+#> make install
+
+[stcam_lib]
+#> cd lib
+#> cp stcam_lib.h /usr/local/include/sentech/
+#> mkdir /usr/local/lib/sentech
+#> cp libstcam-x86_64.so /usr/local/lib/sentech/libstcam.so
+ Please change the library file from below list based on the system environment.
+  64bit PC  : libstcam-x86_64.so
+  32bit PC  : libstcam-x86.so
+  64bit ARM : libstcam-arm64.so
+  32bit ARM : libstcam-arm.so
+#> cp sentech.conf /etc/ld.so.conf.d/
+#> ldconfig
+
+[simple_capture]
+#> cd simple_capture
+#> make
+
+[viewer]
+ For Ubuntu
+#> cd viewer
+#> qmake
+#> make
+
+ For CentOS
+#> cd viewer
+#> qmake-qt5
+#> make
+

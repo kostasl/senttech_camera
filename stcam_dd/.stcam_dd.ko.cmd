@@ -1,0 +1,1 @@
+cmd_/home/kostasl/Sentech-4.0.3/stcam_dd/stcam_dd.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/kostasl/Sentech-4.0.3/stcam_dd/stcam_dd.ko /home/kostasl/Sentech-4.0.3/stcam_dd/stcam_dd.o /home/kostasl/Sentech-4.0.3/stcam_dd/stcam_dd.mod.o ;  true
