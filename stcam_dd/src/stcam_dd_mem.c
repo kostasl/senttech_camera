@@ -12,7 +12,7 @@
 //#include </usr/src/linux-headers-4.15.0-45/include/linux/slab.h>
 //#include </usr/src/linux-headers-4.15.0-45/include/linux/mm.h>
 //#include </usr/src/linux-headers-4.15.0-45/include/linux/vmalloc.h>
-#include </usr/src/linux-headers-4.15.0-45/include/linux/timer.h>
+//#include </usr/src/linux-headers-4.15.0-45/include/linux/timer.h>
 
 #include <linux/timer.h>
 #include <linux/slab.h>
@@ -86,11 +86,11 @@ int stcam_dd_mem_alloc_usb_data(struct stcam_st_dev_data *ddata)
         //Suggested Alternative Is:
         // https://lwn.net/Articles/735887/, pointed to patch https://lwn.net/Articles/735892/.
         // Overall You need a new struct that contains data and timer_list. The data is then retrieved from the callback by using the from_timer function.
-        struct stcam_st_dev_timer_data *tmdat =  kzalloc(sizeof(struct stcam_st_dev_timer_data), GFP_KERNEL);
-        tmdat->timer = ddata->usb_ctrl->timer_list;
-        tmdat->ddata = (unsigned long)ddata;
-
-        timer_setup(&tmdat->timer, stcam_dd_set_time_out, 0);
+        //struct stcam_st_dev_timer_data *tmdat =  kzalloc(sizeof(struct stcam_st_dev_timer_data), GFP_KERNEL);
+        //tmdat->timer = ddata->usb_ctrl->timer_list;
+        //tmdat->ddata = (unsigned long)ddata;
+        //Pass the Container Struct Directly - Then Data is recovered using from_timer in the callback
+        timer_setup(&ddata->usb_ctrl->timer_list, stcam_dd_set_time_out, 0);
     #endif
 
     ddata->usb_ctrl->timer_list.function = stcam_dd_set_time_out;

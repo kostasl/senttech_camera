@@ -1563,21 +1563,21 @@ void stcam_dd_set_time_out(unsigned long data)
     }
 }
 #else
-//KL: New Time Call Back, Typed adhering to Kernel 4.15
-void stcam_dd_set_time_out(struct timer_list * tm)
-{
-        //stcam_dd_set_time_out(tm->data);
-        // Retrieve the custom struct that glued timer_list and data together
-        struct stcam_st_dev_timer_data *tmd =  from_timer(tmd, tm, timer);
-        struct stcam_st_dev_data *ddata = (struct stcam_st_dev_data*)tmd->ddata;
-        struct siginfo info;
+    //KL: New Time Call Back, Typed adhering to Kernel 4.15
+    void stcam_dd_set_time_out(struct timer_list * tm)
+    {
+            //stcam_dd_set_time_out(tm->data);
+            // Retrieve the custom struct that glued timer_list and data together
+            struct stcam_st_usb_ctrl * usb_ctrl=  from_timer(usb_ctrl, tm, timer_list);
+            struct stcam_st_dev_data *ddata = usb_ctrl->pdata; //Get Container data, via stored Pointer// (struct stcam_st_dev_data*)tmd->ddata;
+            struct siginfo info;
 
-        if(ddata->usb_ctrl->is_callback_error_enable) {
-            info.si_int = ddata->usb_ctrl->current_timer;
-            send_sig_info(STC_SIGNAL_CALLBACK_ERROR, &info, ddata->usb_ctrl->task);
-        }
+            if(ddata->usb_ctrl->is_callback_error_enable) {
+                info.si_int = ddata->usb_ctrl->current_timer;
+                send_sig_info(STC_SIGNAL_CALLBACK_ERROR, &info, ddata->usb_ctrl->task);
+            }
 
-}
+    }
 
 
 #endif

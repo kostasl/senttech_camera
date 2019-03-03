@@ -11,7 +11,7 @@ deps_/home/kostasl/Sentech-4.0.3/stcam_dd/src/stcam_dd_mem.o := \
     $(wildcard include/config/optimize/inlining.h) \
     $(wildcard include/config/gcov/kernel.h) \
     $(wildcard include/config/arch/use/builtin/bswap.h) \
-  /usr/src/linux-headers-4.15.0-45/include/linux/timer.h \
+  include/linux/timer.h \
     $(wildcard include/config/lockdep.h) \
     $(wildcard include/config/debug/objects/timers.h) \
     $(wildcard include/config/smp.h) \
@@ -385,7 +385,6 @@ deps_/home/kostasl/Sentech-4.0.3/stcam_dd/src/stcam_dd_mem.o := \
   include/linux/debugobjects.h \
     $(wildcard include/config/debug/objects.h) \
     $(wildcard include/config/debug/objects/free.h) \
-  include/linux/timer.h \
   include/linux/slab.h \
     $(wildcard include/config/debug/slab.h) \
     $(wildcard include/config/failslab.h) \

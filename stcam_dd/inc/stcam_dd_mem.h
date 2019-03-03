@@ -255,6 +255,7 @@ struct stcam_st_usb_ctrl
 	__u16								timeout_exposure;
 	__u16								timeout_readout;
 	struct timer_list					timer_list;
+    struct stcam_st_dev_data*           pdata; //KL Patch > Kernel 4.15: Pointer to container data struct
 	__u8								current_timer;
 	struct task_struct					*task;
 	struct stcam_st_urb_data			urb_data[URB_DATA_MAX];

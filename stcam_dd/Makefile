@@ -6,10 +6,10 @@ else
 	KERNELDIR ?= /lib/modules/$(shell uname -r)/build
 	PWD := $(shell pwd)
 	USER_INCLUDES := /usr/local/include/
-	CPPFLAGS = -I $(PWD)  -Wno-implicit-function-declaration 
+	CPPFLAGS = -I $(PWD)
 
 default:
-	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules -Wno-implicit-function-declaration 
+	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
 
 install: default copy
 
