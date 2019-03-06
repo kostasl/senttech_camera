@@ -1,4 +1,4 @@
-# senttech_camera
+# Omron Sentech Camera Updated Linux Driver 
 Omron Settech camera Linux drivers and supporting applications can be downloaded from the manufacturers website. 
 https://sentech.co.jp/en/products/USB/mini.html
 
